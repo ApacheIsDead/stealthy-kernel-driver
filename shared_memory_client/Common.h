@@ -22,7 +22,7 @@ struct UM_Msg
 {
     ULONG ProcId;
     ULONG pad1;//
-    ULONGLONG address;
+    uintptr_t address;
     OPERATION_TYPE opType; // 4 bytes
     ULONG pad2;
     ULONGLONG dataSize;

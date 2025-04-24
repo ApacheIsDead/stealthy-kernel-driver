@@ -142,7 +142,7 @@ VOID* read_address(PVOID addr, SIZE_T InSize)
 {
 
 	auto msg = InitMsg(ToDriver, InSize);
-	msg->address = reinterpret_cast<ULONGLONG>(addr); //***
+	msg->address = reinterpret_cast<ULONGLONG>(addr); //*** may still  fail because the kernel will store this as PVOID but it wasnt passed this way because msg-> address = ulonglong
 	msg->opType = OPERATION_TYPE::OP_READ;
 	
 
@@ -233,9 +233,6 @@ VOID* read_address(PVOID addr, SIZE_T InSize)
 		return NULL;
 	}
 }
-
-
-
 
 void ExitSystemThread()
 {

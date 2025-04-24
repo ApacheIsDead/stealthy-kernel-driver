@@ -16,8 +16,6 @@ const std::string process_name = "cs2.exe";
 
  int main()
  {
-     printf("sizeof(void*): %llu\n", sizeof(void*));
-     std::cin.get();
      if (OpenSharedMemory())
      {
          printf("SharedMemory Initialized: %d\n", GetLastError());
@@ -65,8 +63,20 @@ const std::string process_name = "cs2.exe";
      }
 
      while (true) {
-         
+		 if (GetAsyncKeyState(VK_END) & 1) // end key to exit
+		 {
+			 printf("[+] Exiting...\n");
+			 clean();
+			 ExitSystemThread();
+			 return 0;
+		 }
+         /*
+		 if (GetAsyncKeyState(VK_F1) & 1) // F1 key to toggle aimbot
+		 {
+			 aimbot::toggle();
+			 printf("[+] Aimbot toggled: %s\n", aimbot::isEnabled() ? "ON" : "OFF
          // ur cheat logic
+         */
          Sleep(1);
      }
 
